@@ -1,0 +1,4 @@
+env: flex
+runtime: nodejs
+beta_settings:
+  cloud_sql_instances: node-gcp-189007:us-central1:demodb
