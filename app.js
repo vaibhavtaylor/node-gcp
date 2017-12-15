@@ -13,9 +13,11 @@ app.get('/mysql', function(req, res){
     // res.status(200).send("User Pager");
     var con = mysql.createConnection({
         host: "35.188.161.30",
-        port: 3307,
+        port: 3306,
         user: "root",
-        password: "root"
+        password: "root",
+        database: "demo",
+        // socketPath: "/cloudsql/node-gcp-189007:us-central1:demodb"
       });
       
       con.connect(function(err) {
@@ -24,12 +26,12 @@ app.get('/mysql', function(req, res){
             throw err;
         }
         console.log("connected");
-        res.send("Mysql Connected");
-        // con.query("SELECT * FROM customers", function (err, result, fields) {
-        //   if (err) throw err;
-        //   console.log(result);
-        //   res.send("Mysql Page");
-        // });
+        // res.send("Mysql Connected");
+        con.query("SELECT * FROM demo.locness", function (err, result, fields) {
+          if (err) throw err;
+          console.log(result);
+          res.send("Mysql Page");
+        });
       });
 });
 
